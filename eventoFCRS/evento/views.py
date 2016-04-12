@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from evento.models import Evento
 
 def index(request):
-    return render(request, 'evento/home.html', {
-        'nome': "Zarathon Maia",
-        'idade': '30 anos',
-        'altura': '1,92 metros',
-        })
+    eventos = Evento.objects.all()
+    return render(request, 'evento/home.html', {'lista_eventos': eventos})

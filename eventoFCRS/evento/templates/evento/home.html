@@ -7,13 +7,13 @@
   <body>
     <div class="" id="top">
       <h1>Seja bem vindo ao Sitema de Eventos da FCRS</h1>
-      <h2>Olá, {{nome}}</h2>
-      <p>
-        {{idade}}
-      </p>
-      <p>
-        {{altura}}
-      </p>
     </div>
+    {% for evento in lista_eventos %}
+      <div class="">
+        <h3>{{evento.nome}}</h3>
+        <h4>{{evento.data}} - {{evento.local}}</h4>
+      </div>
+      <hr/>
+    {% endfor %}
   </body>
 </html>
