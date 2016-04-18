@@ -65,3 +65,8 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.nome
+
+
+class Inscricao(models.Model):
+    evento = models.ForeignKey(Evento, on_delete=models.SET_NULL, null=True)
+    usuario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True)
