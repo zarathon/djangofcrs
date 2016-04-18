@@ -1,19 +1,38 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
     <title>Evento FCRS</title>
+
+    <link href="{% static 'evento/css/bootstrap.min.css' %}" rel="stylesheet">
+
   </head>
   <body>
-    <div class="" id="top">
-      <h1>Seja bem vindo ao Sitema de Eventos da FCRS</h1>
-    </div>
-    {% for evento in lista_eventos %}
-      <div class="">
-        <h3>{{evento.nome}}</h3>
-        <h4>{{evento.data}} - {{evento.local}}</h4>
+    <div class="container">
+      <div class="col-md-4">
+        <img src="{% static 'evento/img/nerd.jpeg'%}"  width="100%" alt="" />
       </div>
-      <hr/>
-    {% endfor %}
+      <div class="col-md-8" id="top">
+        <h1>Seja bem vindo ao Sitema de Eventos da FCRS</h1>
+      </div>
+      <div class="col-md-12">
+        {% for evento in lista_eventos %}
+          <div class="col-md-6">
+            <h3>{{evento.nome}}</h3>
+            <h4>{{evento.data}} - {{evento.local}}</h4>
+            <a href="{% url 'mostrar_evento' evento.id %}" class="btn btn-primary">Ir para página do evento</a>
+            {% if evento.vagas > evento.inscricao_set.all.count %}
+              <a href="#" class="btn btn-success">Faça sua Inscrição</a>
+            {% else %}
+              <a href="#" class="btn btn-danger">LOTADO!</a>
+            {% endif %}
+            <hr/>
+          </div>
+
+        {% endfor %}
+      </div>
+
+    </div>
   </body>
 </html>
