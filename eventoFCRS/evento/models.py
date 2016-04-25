@@ -56,12 +56,12 @@ ESTADOS_CHOICES = [
 class Usuario(models.Model):
     nome = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
-    cpf = models.CharField(max_length=200, unique=True)
-    genero = models.CharField(max_length=200, choices=GENERO_CHOICES)
-    telefone = models.CharField(max_length=200)
-    idade = models.PositiveIntegerField()
-    cidade = models.CharField(max_length=200)
-    estado = models.CharField(max_length=200, choices=ESTADOS_CHOICES)
+    cpf = models.CharField(max_length=200, unique=True, null=True, blank=True)
+    genero = models.CharField(max_length=200, choices=GENERO_CHOICES, null=True, blank=True)
+    telefone = models.CharField(max_length=200, null=True, blank=True)
+    idade = models.PositiveIntegerField(null=True, blank=True)
+    cidade = models.CharField(max_length=200, null=True, blank=True)
+    estado = models.CharField(max_length=200, choices=ESTADOS_CHOICES,null=True, blank=True)
 
     def __str__(self):
         return self.nome

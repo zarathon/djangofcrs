@@ -23,7 +23,7 @@
             <h4>{{evento.data}} - {{evento.local}}</h4>
             <a href="{% url 'mostrar_evento' evento.id %}" class="btn btn-primary">Ir para página do evento</a>
             {% if evento.vagas > evento.inscricao_set.all.count %}
-              <a href="#" class="btn btn-success">Faça sua Inscrição</a>
+              <a href="{% url 'inscrever_evento' evento.id %}" class="btn btn-success">Faça sua Inscrição</a>
             {% else %}
               <a href="#" class="btn btn-danger">LOTADO!</a>
             {% endif %}
